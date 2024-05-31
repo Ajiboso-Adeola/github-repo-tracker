@@ -1,4 +1,5 @@
-// server.js
+require('dotenv').config(); 
+const dbconnect = require('./dbconnect')
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -10,8 +11,7 @@ const port = 3000;
 // Middleware
 app.use(bodyParser.json());
 
-// MongoDB connection
-mongoose.connect('mongodb://localhost:27017/github_tracker', { useNewUrlParser: true, useUnifiedTopology: true });
+dbconnect()
 
 // Schema and model for activity
 const activitySchema = new mongoose.Schema({
